@@ -1,0 +1,359 @@
+/* VoiceFlow Component Styles */
+
+.voiceflow-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  min-height: 100vh;
+}
+
+/* Main Voice Control Section */
+.voiceflow-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Voice Orb Animation */
+.voiceflow-orb {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.voiceflow-orb[data-state="listening"] {
+  animation: pulse-listening 1.5s ease-in-out infinite;
+  border-color: #00ff88;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.2), rgba(0, 255, 136, 0.05));
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+}
+
+.voiceflow-orb[data-state="processing"] {
+  animation: pulse-processing 1s ease-in-out infinite;
+  border-color: #ffaa00;
+  background: radial-gradient(circle, rgba(255, 170, 0, 0.2), rgba(255, 170, 0, 0.05));
+  box-shadow: 0 0 30px rgba(255, 170, 0, 0.4);
+}
+
+.voiceflow-orb[data-state="speaking"] {
+  animation: pulse-speaking 1.2s ease-in-out infinite;
+  border-color: #00aaff;
+  background: radial-gradient(circle, rgba(0, 170, 255, 0.2), rgba(0, 170, 255, 0.05));
+  box-shadow: 0 0 30px rgba(0, 170, 255, 0.4);
+}
+
+.voiceflow-orb-inner {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.voiceflow-orb-ring {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  animation: ring-pulse 1.5s ease-out infinite;
+}
+
+@keyframes pulse-listening {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes pulse-processing {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(180deg);
+  }
+}
+
+@keyframes pulse-speaking {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes ring-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.voiceflow-status {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+  min-height: 24px;
+}
+
+.voiceflow-controls {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-danger {
+  background-color: #ff4444;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: #ff2222;
+}
+
+/* Current Command Display */
+.voiceflow-current {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.voiceflow-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.voiceflow-section h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.voiceflow-transcript,
+.voiceflow-response,
+.voiceflow-intent {
+  margin: 0;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.voiceflow-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.voiceflow-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(0, 255, 136, 0.2);
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tool-name {
+  color: #00ff88;
+}
+
+.voiceflow-section.result {
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid #ffaa00;
+  background: rgba(255, 170, 0, 0.1);
+}
+
+.voiceflow-section.result.success {
+  border-left-color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.voiceflow-section.result.error {
+  border-left-color: #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+}
+
+.error-detail {
+  margin: 8px 0 0 0;
+  font-size: 12px;
+  opacity: 0.8;
+  font-family: monospace;
+}
+
+/* Error Message */
+.voiceflow-error {
+  padding: 16px;
+  background-color: rgba(255, 68, 68, 0.2);
+  border: 1px solid rgba(255, 68, 68, 0.4);
+  border-radius: 8px;
+  color: #ffaaaa;
+  font-size: 14px;
+}
+
+/* Command History */
+.voiceflow-history-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.voiceflow-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.voiceflow-history-item {
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border-left: 3px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.voiceflow-history-item:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-left-color: rgba(0, 255, 136, 0.6);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.history-time {
+  opacity: 0.7;
+  font-family: monospace;
+}
+
+.history-status {
+  font-size: 14px;
+}
+
+.history-status.success {
+  color: #00ff88;
+}
+
+.history-status.error {
+  color: #ff4444;
+}
+
+.history-status.pending {
+  color: #ffaa00;
+}
+
+.history-content p {
+  margin: 6px 0;
+  font-size: 13px;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.history-transcript,
+.history-intent,
+.history-response {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Scrollbar Styling */
+.voiceflow-history-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.voiceflow-history-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.voiceflow-history-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.voiceflow-history-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .voiceflow-panel {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .voiceflow-main {
+    padding: 24px 16px;
+  }
+
+  .voiceflow-orb {
+    width: 100px;
+    height: 100px;
+  }
+
+  .voiceflow-orb-inner {
+    width: 65px;
+    height: 65px;
+  }
+
+  .voiceflow-current,
+  .voiceflow-history-section {
+    padding: 16px;
+  }
+
+  .btn-lg {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
