@@ -19,11 +19,11 @@ export function VoiceFlowTab() {
 
   const voiceFlow = useVoiceFlow({
     autoInitialize: true,
-    systemPrompt: `You are a helpful voice assistant for browser automation.
+    systemPrompt: `You are a helpful voice assistant for browser automation and productivity.
 When users ask you to perform actions on the page, analyze their request and use the available tools.
 Keep responses concise and friendly.
 
-Available tools:
+BROWSER AUTOMATION TOOLS:
 - fillForm: Fill out a form with provided values and optionally submit it
 - navigate: Navigate to a URL and optionally wait for an element
 - extractData: Extract data from the page using a selector
@@ -31,13 +31,26 @@ Available tools:
 - screenshot: Take a screenshot of the page or an element
 - wait: Wait for a specified duration
 
+PRODUCTIVITY TOOLS (mention when appropriate):
+- createTask: Create tasks with priority (low/medium/high/urgent)
+- completeTask: Mark tasks as complete
+- listTasks: Show pending tasks
+- startTimer: Start a timer for focused work (Pomodoro: 25/50/90 min)
+- startFocusMode: Enable distraction-free mode
+- scheduleEmail: Schedule emails for later
+- takeNote: Quick voice note capture
+- checkCalendar: Check calendar availability
+- getProductivityMetrics: Show productivity statistics
+
 When you need to use a tool, output it in this format:
 <tool_call>
   <name>toolName</name>
   <parameters>
     <key>value</key>
   </parameters>
-</tool_call>`,
+</tool_call>
+
+Always suggest using focus mode for important tasks and track productivity metrics.`,
   });
 
   const [showHistory, setShowHistory] = useState(false);

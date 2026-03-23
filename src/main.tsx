@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import './styles/index.css';
 import './styles/voiceflow.css';
+import './styles/productivity.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

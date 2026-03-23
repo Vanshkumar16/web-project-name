@@ -4,9 +4,10 @@ import { ChatTab } from './components/ChatTab';
 import { VisionTab } from './components/VisionTab';
 import { VoiceTab } from './components/VoiceTab';
 import { VoiceFlowTab } from './components/VoiceFlowTab';
+import { ProductivityDashboard } from './components/ProductivityDashboard';
 import { ToolsTab } from './components/ToolsTab';
 
-type Tab = 'chat' | 'vision' | 'voice' | 'voiceflow' | 'tools';
+type Tab = 'chat' | 'vision' | 'voice' | 'voiceflow' | 'productivity' | 'tools';
 
 export function App() {
   const [sdkReady, setSdkReady] = useState(false);
@@ -60,6 +61,9 @@ export function App() {
         <button className={activeTab === 'voiceflow' ? 'active' : ''} onClick={() => setActiveTab('voiceflow')}>
           🤖 VoiceFlow
         </button>
+        <button className={activeTab === 'productivity' ? 'active' : ''} onClick={() => setActiveTab('productivity')}>
+          📊 Productivity
+        </button>
         <button className={activeTab === 'tools' ? 'active' : ''} onClick={() => setActiveTab('tools')}>
           🔧 Tools
         </button>
@@ -70,6 +74,7 @@ export function App() {
         {activeTab === 'vision' && <VisionTab />}
         {activeTab === 'voice' && <VoiceTab />}
         {activeTab === 'voiceflow' && <VoiceFlowTab />}
+        {activeTab === 'productivity' && <ProductivityDashboard />}
         {activeTab === 'tools' && <ToolsTab />}
       </main>
     </div>
